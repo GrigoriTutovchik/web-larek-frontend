@@ -29,3 +29,7 @@ export interface IOrderResult {
 export type ProductCategory = 'софт-скил' | 'другое' | 'дополнительное' | 'кнопка' | 'хард-скил';
 
 export type PaymentMethod = 'cash' | 'card';
+
+export type IOrderForm = Omit<IOrder, 'total' | 'items'>;
+
+export type FormErrors = Partial<Record<keyof IOrder, string>>;
