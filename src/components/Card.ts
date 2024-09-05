@@ -64,12 +64,35 @@ export class Card extends Component<IProduct> {
   }
   
   set price(value: number) {
-    this.setText(this._price, (value) ? `${value.toString()} синапсов` : '∞');
+    this.setText(this._price, (value) ? `${value.toString()} синапсов` : 'Бесценно');
         this.disablePriceButton(value);
   }
   
   set category(value: string) {
+    if (!this._category) return;
     this.setText(this._category, value);
+    this._category.className = this._category.className.split(' ')[0];
+    switch (value) {
+        case 'другое':
+            this._category.classList.add('card__category_other');
+            break;
+        case 'софт-скил':
+            this._category.classList.add('card__category_soft');
+            break;
+        case 'хард-скил':
+            this._category.classList.add('card__category_hard');
+            break;
+        case 'дополнительное':
+            this._category.classList.add('card__category_additional');
+            break;
+        case 'кнопка':
+            this._category.classList.add('card__category_button');
+            break;
+    }
+  }
+
+  get category(): string {
+    return this._category.textContent || '';
   }
   
   set image(value: string) {

@@ -64,7 +64,6 @@ setOrderField(field: keyof IOrderForm, value: string) {
   if (this.order.payment && this.validateOrder()) {
       this.order.items = this.basket.items;
       this.order.total = this.basket.total;
-      this.events.emit('order:ready', this.order);
   }
 }
 

@@ -84,10 +84,6 @@ events.on('order:submit', () => {
   });
 });
 
-events.on('order:ready', (order: IOrder) => {
-  contactsForm.valid = true;
-});
-
 events.on('formErrors:change', (errors: Partial<IOrderForm>) => {
   const { payment, address, email, phone } = errors;
   orderForm.valid = !payment && !address;
@@ -158,7 +154,6 @@ events.on('items:change', (items: IProduct[]) => {
 		});
 		return card.render(item);
 	});
-	console.log('hello');
 });
 
 api.getProductList()
